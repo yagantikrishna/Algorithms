@@ -44,7 +44,5 @@ public class ssort {
         s1.printArray(numbers);
         System.out.println("\nAfter:");
         s1.sort(numbers, ds, 0);
-        s1.printArray(numbers);
-
     }
 }
