@@ -42,7 +42,7 @@ public class ssort {
         }
         System.out.println("Before:");
         ssort s1 = new ssort();
-        //s1.printArray(numbers);
+        s1.printArray(numbers);
         System.out.println("\nAfter:");
         s1.sort(numbers, ds, 0);
 
