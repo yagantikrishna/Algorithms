@@ -60,10 +60,7 @@ public class quicksort {
 
             swap(array, leftPointer, rightPointer);
         }
-
-        // This is different from what the video has, and fixes an issue where the last
-        // value could potentially be out of order.
-        // Thanks to viewer Wilson Barbosa for suggesting the fix!
+       // value could potentially be out of order.
         if (array[leftPointer] > array[highIndex]) {
             swap(array, leftPointer, highIndex);
         } else {
