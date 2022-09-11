@@ -1,24 +1,24 @@
-import java.util.*
+import java.util.*;
 public class ssort {
-    public void sort(int[] arr, ArrayList<Integer> ds, int index) {
-        for (int i = 0; i < arr.length; i++) {
-            int min = arr[index];
-            if (arr[i] < min) {
-                min = arr[i];
-                index=i;
+    public static void selectionSort(int[] arr, int i, int n)
+    {
+        // find the minimum element in the unsorted subarray `[i…n-1]`
+        // and swap it with `arr[i]`
+        int min = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            // if `arr[j]` is less, then it is the new minimum
+            if (arr[j] < arr[min]) {
+                min = j;    // update the index of minimum element
             }
         }
-        swap(arr, 0, index);
-        ds.add(arr[0]);
-        int[] arr2=new int[arr.length-1];
-        if(arr2.length<1){
-            System.out.println(ds);
-            return;
+
+        // swap the minimum element in subarray `arr[i…n-1]` with `arr[i]`
+        swap(arr, min, i);
+
+        if (i + 1 < n) {
+            selectionSort(arr, i + 1, n);
         }
-        for (int j = 1; j < arr.length; j++) {
-            arr2[j - 1] = arr[j];
-        }
-        sort(arr2, ds, 0);
     }
 
     public static void swap(int[] arr, int index1, int index2) {
@@ -35,16 +35,17 @@ public class ssort {
 
     public static void main(String[] args) {
         Random rand = new Random();
-        int[] numbers = new int[10000];
+        int[] numbers = new int[16000];
         ArrayList<Integer> ds = new ArrayList<>();
         for (int i = 0; i < numbers.length; i++) {
             numbers[i] = rand.nextInt(100);
         }
         System.out.println("Before:");
         ssort s1 = new ssort();
-        s1.printArray(numbers);
+        //s1.printArray(numbers);
         System.out.println("\nAfter:");
-        s1.sort(numbers, ds, 0);
+        s1.selectionSort(numbers, 0, numbers.length);
+        System.out.println(Arrays.toString(numbers));
 
     }
 }
